@@ -17,6 +17,6 @@ int main()
         cin >> nums2[i];
     }
     double res = 0;
-      
+    
     return 0;
 }
