@@ -13,23 +13,17 @@ int main()
     cin >> k;
     int count = 0;
     int sum = 0;
+    map<int, int> presum;
+    presum[0] = 1;
+
     for (int i = 0; i < nums.size(); i++)
     {
-        for (int j = i; j < nums.size(); j++)
+        sum = sum + nums[i];
+        if (presum.find(sum - k) != presum.end())
         {
-            sum = sum + nums[j];
-            if (sum == k)
-            {
-                count++;
-                cout << j << " " << sum << " " << count << "   ";
-            }
-
-            if (sum > k)
-            {
-                break;
-            }
+            count += presum[sum - k];
         }
-        sum = 0;
+        presum[sum]++;
     }
 
     cout << "\nans is " << count;
