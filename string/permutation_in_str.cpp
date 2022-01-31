@@ -15,34 +15,29 @@ int main()
     for (int j = 0; j < len; j++)
     {
         alpha[s1[j]]++;
-        copy[s1[j]]++;
     }
 
     for (int i = 0; i < s2.length(); i++)
     {
-        // if (i >= len)
-        // {
-        //     if (alpha[s1[str]] != 0)
-        //     {
-        //         alpha[s1[str]]++;
-        //     }
-        //     str++;
-        // }
 
-        if (alpha[s2[i]] != 0)
+        if (alpha[s2[i]] > copy[s2[i]] && alpha[s2[i]] > 0)
         {
-            alpha[s2[i]]--;
+            copy[s2[i]]++;
             len--;
         }
         else
         {
-            alpha = copy;
-            len = s1.length();
-            if (alpha[s2[i]] != 0)
+            while (s2[str] != s2[i])
             {
-                alpha[s2[i]]--;
-                len--;
+                if (alpha[s2[str]] > 0)
+                {
+                    alpha[s2[i]]--;
+                    len++;
+                }
+
+                str++;
             }
+            str++;
         }
 
         if (len == 0)
