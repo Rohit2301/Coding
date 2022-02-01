@@ -19,19 +19,28 @@ int main()
 
     for (int i = 0; i < s2.length(); i++)
     {
+        if (i - str + 1 > s1.length())
+        {
+            if (alpha[s2[str]] > 0)
+            {
+                copy[s2[str]]--;
+                len++;
+            }
+            str++;
+        }
 
         if (alpha[s2[i]] > copy[s2[i]] && alpha[s2[i]] > 0)
         {
             copy[s2[i]]++;
             len--;
         }
-        else
+        else if (alpha[s2[i]] == copy[s2[i]] && alpha[s2[i]] > 0)
         {
             while (s2[str] != s2[i])
             {
                 if (alpha[s2[str]] > 0)
                 {
-                    alpha[s2[i]]--;
+                    copy[s2[str]]--;
                     len++;
                 }
 
@@ -39,6 +48,7 @@ int main()
             }
             str++;
         }
+        cout << " " << len;
 
         if (len == 0)
         {
