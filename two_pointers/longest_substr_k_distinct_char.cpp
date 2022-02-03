@@ -6,7 +6,7 @@ int main()
     string str;
     cin >> str;
     int k;
-    cin>>k;
+    cin >> k;
 
     unordered_map<char, int> freq;
     int st = 0;
@@ -23,7 +23,6 @@ int main()
                 {
                     freq.erase(str[st]);
                 }
-
                 st++;
             }
         }
