@@ -29,24 +29,21 @@ void add(Node *head, int val)
     head->next = temp;
 }
 
-Node *delDup(Node *head)
+Node *middleNode(Node *head)
 {
-    Node *temp = new Node();
-    Node *org = new Node();
-    org = head;
-    while (head != NULL)
-    {
-        while (head->next != NULL && head->next->data == head->data)
-        {
-            temp = head->next;
-            head->next = temp->next;
-            delete (temp);
-        }
 
-        head = head->next;
+    Node *fast = new Node();
+    Node *slow = new Node();
+    fast = head;
+    slow = head;
+
+    while (fast && fast->next)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
     }
 
-    return org;
+    return slow;
 }
 
 int main()
@@ -55,13 +52,16 @@ int main()
     head->data = 1;
     head->next = NULL;
 
-    add(head, 1);
-    add(head, 2);
+    for (int i = 0; i < 5; i++)
+    {
+        int n;
+        cin >> n;
+        add(head, n);
+    }
 
-    Node *head1 = new Node();
-    head1 = delDup(head);
-
-    print(head1);
+    Node *mid = NULL;
+    mid = middleNode(head);
+    cout << mid->data;
 
     return 0;
 }
