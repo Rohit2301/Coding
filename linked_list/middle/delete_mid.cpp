@@ -29,35 +29,17 @@ void add(Node *head, int val)
     head->next = temp;
 }
 
-Node *middleNode(Node *head)
+Node *delMid(Node *head)
 {
-
-    Node *fast = new Node();
-    Node *slow = new Node();
-    fast = head;
-    slow = head;
-
-    while (fast && fast->next)
+    if (head->next == nullptr)
+        return nullptr;
+    auto slow = head, fast = head->next->next;
+    while (fast != nullptr && fast->next != nullptr)
     {
         fast = fast->next->next;
         slow = slow->next;
     }
-
-    return slow;
-}
-
-Node *delMid(Node *head)
-{
-    Node *mid = middleNode(head);
-    if (mid->next)
-    {
-        (*mid) = *(mid->next);
-    }
-    else if (mid->next == NULL)
-    {
-        mid = NULL;
-    }
-
+    slow->next = slow->next->next;
     return head;
 }
 
