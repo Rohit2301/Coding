@@ -34,7 +34,7 @@ Node *middleNode(Node *head)
 
     Node *fast = new Node();
     Node *slow = new Node();
-    fast = head;
+    fast = head->next;
     slow = head;
 
     while (fast && fast->next)
