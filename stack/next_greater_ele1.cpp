@@ -22,48 +22,28 @@ int main()
     int k = 0;
     int ind = 0;
     vector<int> resu;
-    for (int k = 0; k < nums1.size(); k++)
-    {
-
-        for (int j = 0; j < nums2.size(); ++j)
-        {
-            if (nums1[k] == nums2[j])
-            {
-                ind = j;
-                break;
-            }
-        }
-        for (int i = ind + 1; i < nums2.size(); ++i)
-        {
-            if (nums2[ind] < nums2[i] && ind != nums2.size() - 1)
-            {
-                resu.insert(resu.begin() + k, nums2[i]);
-                break;
-            }
-            else
-            {
-                resu.insert(resu.begin() + k, -1);
-            }
-        }
-        if (ind == nums2.size() - 1)
-        {
-            resu.insert(resu.begin() + k, -1);
-        }
-    }
-    for (int i = 0; i < nums1.size(); i++)
-    {
-        cout << nums1[i] << "";
-    }
-    cout << endl;
+    map<int, int> freq;
+    stack<int> st;
     for (int i = 0; i < nums2.size(); i++)
     {
-        cout << nums2[i] << "";
+        while (!st.empty() && st.top() < nums2[i])
+        {
+            freq[st.top()] = nums2[i];
+            st.pop();
+        }
+        st.push(nums2[i]);
     }
-    cout << endl;
-    resu.resize(nums1.size());
-    for (int i = 0; i < resu.size(); i++)
+
+    for (int j = 0; j < nums1.size(); j++)
     {
-        cout << resu[i] << " ";
+        if (freq.find(nums1[j]) != freq.end())
+        {
+            resu.push_back(freq[nums1[j]]);
+        }
+        else
+        {
+            resu.push_back(-1);
+        }
     }
 
     return 0;
