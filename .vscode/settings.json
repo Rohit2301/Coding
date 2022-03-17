@@ -53,7 +53,9 @@
         "array": "cpp",
         "chrono": "cpp",
         "random": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "stack": "cpp",
+        "queue": "cpp"
     },
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.formatOnPaste": true,
