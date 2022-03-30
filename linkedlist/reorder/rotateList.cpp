@@ -41,10 +41,41 @@ void add(Node *head, int val)
     head->next = temp;
 }
 
-Node* intersectionPt(Node* head1, Node* head2)
+Node *rotateList(Node *head, int k)
 {
-    
-   
+
+    if (!head || !head->next)
+        return head;
+
+    Node *nHead = NULL;
+    int cnt=0;
+    Node *nTail = head;
+    Node *tail = head;
+    Node *curr = head;
+    while (k > 0)
+    {
+        tail = tail->next;
+        cnt++;
+        if (tail == NULL)
+        {
+            tail = curr;
+            k = k%cnt;
+            
+        }
+
+        k--;
+    }
+    while (tail->next)
+    {
+        tail = tail->next;
+        nTail = nTail->next;
+    }
+
+    tail->next = curr;
+    nHead = nTail->next;
+    nTail->next = NULL;
+
+    return nHead;
 }
 
 int main()
@@ -57,7 +88,6 @@ int main()
         cin >> n;
         add(head, n);
     }
-
 
     return 0;
 }

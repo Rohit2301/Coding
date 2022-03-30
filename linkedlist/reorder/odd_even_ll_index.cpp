@@ -41,10 +41,32 @@ void add(Node *head, int val)
     head->next = temp;
 }
 
-Node* intersectionPt(Node* head1, Node* head2)
+Node *oddEvenList(Node *head)
 {
-    
-   
+    if (!head || !head->next)
+        return NULL;
+
+    Node *prev = head;
+    Node *evenEnd = prev->next;
+
+    Node *forw = head->next->next;
+    Node *oddNxt = NULL;
+
+    while (forw)
+    {
+        oddNxt = forw->next;
+
+        forw->next = prev->next;
+        prev->next = forw;
+        evenEnd->next = oddNxt;
+
+        prev = prev->next;
+        evenEnd = evenEnd->next;
+        if (!oddNxt)
+            break;
+        forw = oddNxt->next;
+    }
+    return head;
 }
 
 int main()
@@ -57,7 +79,6 @@ int main()
         cin >> n;
         add(head, n);
     }
-
 
     return 0;
 }
