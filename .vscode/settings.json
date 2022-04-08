@@ -55,7 +55,14 @@
         "random": "cpp",
         "valarray": "cpp",
         "stack": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "deque": "cpp",
+        "filesystem": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "regex": "cpp",
+        "xtree": "cpp",
+        "set": "cpp"
     },
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.formatOnPaste": true,
